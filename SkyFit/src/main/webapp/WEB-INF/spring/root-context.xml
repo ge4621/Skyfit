@@ -1,8 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 👉 application.properties -->
+  	<!-- 📌 DB 설정 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver"/>
+		<property name="url" value="jdbc:postgresql://localhost:5432/skyFit"/>
+		<property name="username" value="skyFit"/>
+		<property name="password" value="skyFit2025"/>
+	</bean>
+	
+  	<!-- 👉 application.properties -->
+  	<!-- 📌 Springboot를 적용하면 mapper, alias 관련 등록만 해주면 된다.
+ 		    application.properties에서 dataSource는 등록되었음 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations">
+
+			<array>
+				<value>classpath:/**/dao/*Mapper.xml</value> 
+			</array>
+		</property>
 		
+		<property name="typeAliasesPackage" value="com.weather.SkyFit.dto"/>
+			
+		 <property name="configuration">
+	         <bean class="org.apache.ibatis.session.Configuration">
+	            <property name="mapUnderscoreToCamelCase" value="true"/>
+	            <property name="jdbcTypeForNull" value="NULL"/>
+			</bean>
+		</property>	
+			
+				    
+	</bean>
+		
+	
+  	<!-- 👉 DBConfig.java -->
+ 	<!-- 📌 자바 설정 클래스(DBConfig.java)를 따로 생성해서 설정 
+  	  		: dao interface들의 위치 지정 -->
+	<mybatis-spring:scan base-package="com.weather.SkyFit.**.dao"/>
+
+
+	
+  
+  	<!-- 👉 @SpringBootApplication -->
+  	<!-- 📌 @SpringBootApplication로 인해 com.ssafy.board 패키지 내의 클래스들은 
+		모두 Bean 객체 등록되기 때문에 service를 별도로 지정해주지 않아도 된다.
+ 		(DB 관련 설정은 아님)-->
+	<context:component-scan base-package="com.weather.SkyFit"></context:component-scan>	
 </beans>
