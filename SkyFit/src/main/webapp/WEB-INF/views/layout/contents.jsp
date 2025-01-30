@@ -15,10 +15,11 @@
 <%-- JavaScript가 여기에 header.html을 삽입 --%>
 <div id="header"></div>  
 
-<main>
+<div>
 
 layout
-</main>
+
+</div>
 
 
 <%-- JavaScript가 여기에 footer.html을 삽입 --%>
