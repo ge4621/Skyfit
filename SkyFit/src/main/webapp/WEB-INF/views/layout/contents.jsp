@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>SkyFit</title>
 <script src="<%= request.getContextPath() %>/resources/js/commons.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css" rel="stylesheet" />

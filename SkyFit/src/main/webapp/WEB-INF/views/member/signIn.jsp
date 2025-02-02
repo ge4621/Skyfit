@@ -6,10 +6,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SkyFit</title>
-<script src="<%= request.getContextPath() %>/resources/js/commons.js"></script>
+
+<!-- 부트스트랩 cdn -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css" rel="stylesheet">
+ 
+<!-- header / footer 불러오기  -->
+<%-- <link href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css" rel="stylesheet" /> --%>
+<script src="<%= request.getContextPath() %>/resources/js/commons.js"></script>
+
+<!-- 로그인 페이지 css  -->
 <link href="<%= request.getContextPath() %>/resources/css/loginPage.css" rel="stylesheet" />
+
+
 
 </head>
 <body>
@@ -56,6 +66,5 @@
 <%-- JavaScript가 여기에 footer.html을 삽입 --%>
 <div id="footer"></div>  
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

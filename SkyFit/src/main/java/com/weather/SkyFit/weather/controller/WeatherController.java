@@ -1,4 +1,4 @@
-package com.weather.SkyFit.member.controller;
+package com.weather.SkyFit.weather.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,22 +10,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class MemberController {
+public class WeatherController {
 	
 	
 	
 
-	@GetMapping("/member/signIn")
-	public static String login(String[] args) {
+	@GetMapping("/")
+	public static String skyFitHome(String[] args) {
 		
-		return "/member/signIn";
-	}
-	
-	@GetMapping("/member/signUp")
-	public static String join(String[] args) {
-			
 		
-		return "/member/signUp";
+		
+		return "/weather/home";
 	}
-
 }
